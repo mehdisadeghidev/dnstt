@@ -12,7 +12,7 @@ RUN CGO_ENABLED=0 GOOS=linux go build -o dnstt-client ./dnstt-client
 
 FROM alpine:3.23 as runtime
 
-COPY --from=builder /src/dnstt-server /usr/local/bin/dnstt-server
-COPY --from=builder /src/dnstt-client /usr/local/bin/dnstt-client
+COPY --from=builder /src/dnstt-server/dnstt-server /usr/local/bin/dnstt-server
+COPY --from=builder /src/dnstt-client/dnstt-client /usr/local/bin/dnstt-client
 
 ENTRYPOINT [ "dnstt-server" ]
